@@ -9,9 +9,9 @@ prog
   .description('Syncs all the things')
   .option('--project <project>', 'name of project')
   .option('--repo <repo>', 'name of github repo')
-  .option('--tag <tag>', 'Tag to sync')
+  .option('--label <label>', 'Tag to sync')
   .action(async (args, options, logger) => {
-    const stories = await pivotal.fetchTickets(options.project, options.tag)
+    const stories = await pivotal.fetchTickets(options.project, options.label)
     const result = await github.createPr(options.repo, stories)
   })
 

@@ -22,25 +22,25 @@ async function filterProject(project) {
 /**
  * Filters stories a given label
  */
-async function filterStories(id, tag) {
+async function filterStories(id, label) {
   return new Promise((resolve, reject) => {
     tracker.project(id).stories.all((err, stories) => {
       if(err || !stories) {
         reject('No such project')
       }
       resolve(stories.filter(story => {
-        return story.labels.find(label => label.name === tag)
+        return story.labels.find(label => label.name === label)
       }))
     })
   })
 }
 
 module.exports = {
-  async fetchTickets(project, tag) {
+  async fetchTickets(project, label) {
     return new Promise(async (resolve, reject) => {
       try {
         const filteredProject = await filterProject(project)
-        const stories = await filterStories(filteredProject.id, tag)
+        const stories = await filterStories(filteredProject.id, label)
         if(!stories) {
           reject('no stories')
         }
