@@ -1,0 +1,14 @@
+{
+  "name": "pivotal-github-sprint",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:rbvea/pivotal-github-sprint.git",
+  "author": "Russell Vea <russellbvea@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "caporal": "^0.3.0",
+    "github": "^9.1.0",
+    "pify": "^2.3.0",
+    "pivotaltracker": "^0.1.4"
+  }
+}
