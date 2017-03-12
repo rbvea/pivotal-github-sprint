@@ -11,14 +11,26 @@ github.authenticate({
 })
 
 module.exports = {
-  async createPr(repo, stories) {
+  createPr(repo, stories) {
     return new Promise((resolve, reject) => {
       const date = new Date();
       const body =
         stories
           .map(story => {
+            let emoji;
+            switch(story.featureType) {
+              case('bug'):
+                emoji = ':bug:'
+                break;
+              case('chore'):
+                emoji = ':gear:'
+                break;
+              default:
+                emoji = ':star:'
+            }
             return '' +
-              `## [ ] ${story.name} [#${story.projectId}](${story.url})\n` +
+              `## [ ] ${emoji} ${story.name} [#${story.projectId}](${story.url})\n` +
+              `${story.tasks.map(task => `* ${task}`).join("\n")}`
               `${story.description}`
           })
         .join('\n')
