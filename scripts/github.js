@@ -28,9 +28,9 @@ module.exports = {
               default:
                 emoji = ':star:'
             }
+            const tasks = story.tasks || [];
             return '' +
               `## [ ] ${emoji} ${story.name} [#${story.projectId}](${story.url})\n` +
-              `${story.tasks.map(task => `* ${task}`).join("\n")}`
               `${story.description}`
           })
         .join('\n')
